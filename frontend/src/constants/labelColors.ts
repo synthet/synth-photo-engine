@@ -1,5 +1,5 @@
 /**
- * Photo labels and phase status colors — re-exported from @synthet/image-scoring-design.
+ * Photo labels and phase status colors — re-exported from @synthet/synth-photo-design.
  * @see image-scoring-ui docs/DESIGN_SYSTEM.md
  */
 export {
@@ -8,4 +8,4 @@ export {
   PHASE_STATUS_COLORS,
   phaseStatusColor,
   type PhaseStatusColorKey,
-} from '@synthet/image-scoring-design'
+} from '@synthet/synth-photo-design'

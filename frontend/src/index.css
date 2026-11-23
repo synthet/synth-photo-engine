@@ -1,9 +1,9 @@
 @import "tailwindcss";
-@import "@synthet/image-scoring-design/tailwind-theme.css";
+@import "@synthet/synth-photo-design/tailwind-theme.css";
 @import "leaflet/dist/leaflet.css";
 @import "react-leaflet-markercluster/styles";
 
-/* VS Code Dark+ tokens: @synthet/image-scoring-design (Segoe UI body rules below) */
+/* VS Code Dark+ tokens: @synthet/synth-photo-design (Segoe UI body rules below) */
 
 * {
   box-sizing: border-box;

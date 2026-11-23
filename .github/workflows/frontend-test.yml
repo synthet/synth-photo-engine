@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        # frontend/package.json links @synthet/image-scoring-design as file:../../image-scoring-ui,
+        # frontend/package.json links @synthet/synth-photo-design as file:../../image-scoring-ui,
         # so both repos are checked out side by side inside the workspace.
         working-directory: image-scoring-pipeline/frontend
     steps:
@@ -30,7 +30,7 @@ jobs:
       - name: Checkout design package (image-scoring-ui)
         uses: actions/checkout@v4
         with:
-          repository: synthet/image-scoring-ui
+          repository: synthet/synth-photo-design
           path: image-scoring-ui
 
       - name: Setup Node
@@ -65,7 +65,7 @@ jobs:
       - name: Checkout design package (image-scoring-ui)
         uses: actions/checkout@v4
         with:
-          repository: synthet/image-scoring-ui
+          repository: synthet/synth-photo-design
           path: image-scoring-ui
 
       - name: Setup Node

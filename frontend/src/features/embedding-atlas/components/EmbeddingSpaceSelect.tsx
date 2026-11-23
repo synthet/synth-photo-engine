@@ -3,7 +3,7 @@ import { clsx } from 'clsx';
 import {
   EmbeddingSpaceIcon,
   EMBEDDING_SPACE_LABELS,
-} from '@synthet/image-scoring-design';
+} from '@synthet/synth-photo-design';
 import type { EmbeddingSpace } from '../hooks/useEmbeddingSpaces';
 
 function formatSpaceLabel(space: EmbeddingSpace): string {

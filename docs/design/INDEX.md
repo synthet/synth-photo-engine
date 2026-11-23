@@ -1,9 +1,19 @@
+---
+type: Documentation Index
+title: Design — Index
+description: "Entry point for the backend UX/UI rules, the visual spec and the shared design system pointer."
+resource: design/INDEX.md
+tags: [design, frontend, index, okf]
+timestamp: 2026-11-23T00:00:00Z
+okf_version: 0.2
+---
+
 # Design — Index
 
 | Document | Description |
 |----------|-------------|
 | [UX_UI_CONSTITUTION.md](UX_UI_CONSTITUTION.md) | Mandatory UX/UI rules for backend `/ui/` and Gradio `/app` (binding doc; shared principles in image-scoring-ui) |
-| [DESIGN_SYSTEM.md](DESIGN_SYSTEM.md) | Pointer to **image-scoring-ui** canonical palette/icons (`@synthet/image-scoring-design` 1.2.x) |
+| [DESIGN_SYSTEM.md](DESIGN_SYSTEM.md) | Pointer to **image-scoring-ui** canonical palette/icons (`@synthet/synth-photo-design` 2.0.x) |
 | [FRONTEND_VISUAL_SPEC.md](FRONTEND_VISUAL_SPEC.md) | Typography, Leaflet, density — backend SPA implementation annex |
 | [ui-pipeline-redesign.md](../features/planned/ui-pipeline-redesign.md) | Pipeline-centric UI redesign proposal |
 

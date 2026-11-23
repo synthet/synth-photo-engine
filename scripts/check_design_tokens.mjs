@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Verify @synthet/image-scoring-design is installed and synced Gradio CSS matches the package.
+ * Verify @synthet/synth-photo-design is installed and synced Gradio CSS matches the package.
  */
 import crypto from 'node:crypto'
 import fs from 'node:fs/promises'
@@ -40,7 +40,7 @@ async function resolvePackageGradio() {
       return SIBLING_GRADIO
     } catch {
       console.error(
-        'Missing @synthet/image-scoring-design: run npm install in frontend/ and ensure image-scoring-ui is built.',
+        'Missing @synthet/synth-photo-design: run npm install in frontend/ and ensure image-scoring-ui is built.',
       )
       process.exit(1)
     }

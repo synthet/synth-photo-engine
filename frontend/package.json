@@ -25,7 +25,7 @@
     "@radix-ui/react-dialog": "^1.1.15",
     "@radix-ui/react-popover": "^1.1.15",
     "@radix-ui/react-tooltip": "^1.2.8",
-    "@synthet/image-scoring-design": "file:../../image-scoring-ui",
+    "@synthet/synth-photo-design": "file:../../image-scoring-ui",
     "@tailwindcss/vite": "^4.2.1",
     "@tanstack/react-query": "^5.90.21",
     "@types/leaflet": "^1.9.21",
@@ -76,7 +76,7 @@
     "vitest": "^4.1.0"
   },
   "overrides": {
-    "@synthet/image-scoring-design": {
+    "@synthet/synth-photo-design": {
       "react": "$react",
       "react-dom": "$react-dom"
     }
