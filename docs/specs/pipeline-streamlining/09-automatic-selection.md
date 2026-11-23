@@ -13,7 +13,7 @@ status: draft
 
 **Issue:** #867 · **Hub:** [INDEX.md](INDEX.md) · **Epic:** #345 · **Depends on:** #810 (v0 re-detection), #858, #869
 
-**Status:** draft, with D1–D6 decided (see [§ Decisions](#decisions)). Enabling waits for #810 to finish (D6), and the backfill write waits for the owner's go (D5).
+**Status:** implemented, off by default (`modules/localization_auto_select.py`, the `write_run` hook, migration 0050, `scripts/maintenance/auto_select_selections.py`). #810 has finished (D6). Turning `localization.auto_selection.enabled` on, and the backfill write (D5), are the owner's go. D1–D6 are decided (see [§ Decisions](#decisions)).
 
 ## Summary
 
