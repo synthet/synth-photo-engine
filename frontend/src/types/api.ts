@@ -65,9 +65,9 @@ export type StageState =
   | 'restarting'
   | 'canceled'
 
-export type { StageCode } from '@synthet/image-scoring-design'
-export { STAGE_DISPLAY } from '@synthet/image-scoring-design'
-import type { StageCode } from '@synthet/image-scoring-design'
+export type { StageCode } from '@synthet/synth-photo-design'
+export { STAGE_DISPLAY } from '@synthet/synth-photo-design'
+import type { StageCode } from '@synthet/synth-photo-design'
 
 export interface Stage {
   phase_order: number

@@ -1,7 +1,7 @@
 import { useEffect, useState, type ReactNode } from 'react'
 import { clsx } from 'clsx'
 import { ChevronDown, ChevronRight } from 'lucide-react'
-import { formatScoreValue as formatScoreValueBase } from '@synthet/image-scoring-design'
+import { formatScoreValue as formatScoreValueBase } from '@synthet/synth-photo-design'
 import { LABEL_COLORS } from '@/constants/labelColors'
 
 export function LabelBadge({ label, className }: { label: string | null | undefined; className?: string }) {

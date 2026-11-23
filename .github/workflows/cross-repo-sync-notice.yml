@@ -31,7 +31,7 @@ jobs:
           <!-- cross-repo-sync-notice -->
           ### Cross-repo sync notice
 
-          This PR may change backend API/schema (`openapi.json`, `migrations/versions/**`, `modules/api.py`, `modules/db_postgres.py`) and/or the shared design package (`frontend/package.json` → `@synthet/image-scoring-design`).
+          This PR may change backend API/schema (`openapi.json`, `migrations/versions/**`, `modules/api.py`, `modules/db_postgres.py`) and/or the shared design package (`frontend/package.json` → `@synthet/synth-photo-design`).
 
           #### API / schema → **image-scoring-gallery**
 
@@ -42,7 +42,7 @@ jobs:
 
           #### Design tokens → **image-scoring-ui** + gallery
 
-          When `frontend/package.json` changes `@synthet/image-scoring-design` (version or `file:` path):
+          When `frontend/package.json` changes `@synthet/synth-photo-design` (version or `file:` path):
 
           - [ ] **image-scoring-ui** — edit canonical [`docs/DESIGN_SYSTEM.md`](https://github.com/synthet/image-scoring-ui/blob/main/docs/DESIGN_SYSTEM.md) / `src/tokens.json`; `npm run build`; bump package version if needed
           - [ ] **image-scoring-gallery** — match `package.json` dependency; refresh `src/styles/tokens.css` from package `dist/`

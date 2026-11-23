@@ -2,7 +2,7 @@
 
 **Canonical doc:** [image-scoring-ui `docs/DESIGN_SYSTEM.md`](https://github.com/synthet/image-scoring-ui/blob/main/docs/DESIGN_SYSTEM.md) (sibling clone: [`../image-scoring-ui/docs/DESIGN_SYSTEM.md`](../../image-scoring-ui/docs/DESIGN_SYSTEM.md)).
 
-**Shared package:** [`@synthet/image-scoring-design`](https://github.com/synthet/image-scoring-ui) **1.2.x** — token JSON, `dist/tokens.css`, `dist/tailwind-theme.css`, TS constants. Backend installs via `frontend/package.json` (`file:../../image-scoring-ui`).
+**Shared package:** [`@synthet/synth-photo-design`](https://github.com/synthet/synth-photo-design) **2.0.x** — token JSON, `dist/tokens.css`, `dist/tailwind-theme.css`, TS constants. Backend installs via `frontend/package.json` (`file:../../image-scoring-ui`).
 
 **UX/UI constitution:** shared [UX_UI_CONSTITUTION.md](https://github.com/synthet/image-scoring-ui/blob/main/docs/UX_UI_CONSTITUTION.md); backend binding [UX_UI_CONSTITUTION.md](UX_UI_CONSTITUTION.md).
 

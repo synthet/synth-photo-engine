@@ -6,7 +6,7 @@ import {
   EMBEDDING_SPACE_COLORS,
   EMBEDDING_SPACE_LABELS,
   PRIMARY_EMBEDDING_SPACE_CODES,
-} from '@synthet/image-scoring-design'
+} from '@synthet/synth-photo-design'
 
 function embeddingLabel(code: string): string {
   return EMBEDDING_SPACE_LABELS[code] ?? code
