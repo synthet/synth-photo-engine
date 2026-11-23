@@ -1,3 +1,13 @@
+---
+type: Documentation Index
+title: Design — Index
+description: "Entry point for the backend UX/UI rules, the visual spec and the shared design system pointer."
+resource: design/INDEX.md
+tags: [design, frontend, index, okf]
+timestamp: 2026-11-23T00:00:00Z
+okf_version: 0.2
+---
+
 # Design — Index
 
 | Document | Description |
