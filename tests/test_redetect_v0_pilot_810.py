@@ -23,6 +23,12 @@ def test_eligibility(row, expected):
     assert p.eligibility(row) == expected
 
 
+def test_include_legacy_admits_legacy_payload_runs():
+    assert p.eligibility(_row(has_legacy_payload=True)) == "has_legacy_payload"
+    assert p.eligibility(_row(has_legacy_payload=True), include_legacy=True) == "eligible"
+    assert p.eligibility(_row(status="no_detection"), include_legacy=True) == "v0_not_detected"
+
+
 def test_terciles_split_pool_evenly():
     areas = [i / 30 for i in range(30)]
     cuts = p.tercile_cuts(areas)
