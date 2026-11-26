@@ -5,7 +5,7 @@ Reads the model repository's benchmark predictions (per-box ``agree`` scores) an
 box with the pipeline's ONNX provider on the same rendition. Read-only; writes one JSON receipt.
 
 Usage:
-  python scripts/research/detector_benchmark/agreement_parity.py --model-repo ../image-scoring-model \
+  python scripts/research/detector_benchmark/agreement_parity.py --model-repo ../synth-photo-vision \
       --sample data/field_eye_calib_v1 --predictions data/eye_benchmark/calib_v1_crop/B_tdc.predictions.jsonl \
       --out parity.json
 """
