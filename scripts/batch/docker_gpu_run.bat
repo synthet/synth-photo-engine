@@ -6,8 +6,8 @@ REM One-shot: run python inside image-scoring-gpu-shell.
 REM Usage: scripts\batch\docker_gpu_run.bat scripts\doctor.py --no-gpu
 REM        scripts\batch\docker_gpu_run.bat -c "import torch; print(torch.cuda.is_available())"
 REM Long jobs: set GPU_SHELL_DETACH=1
-REM HF Hub auth: set GPU_SHELL_DOTENV=D:\Projects\image-scoring-model\.env
-REM   (or rely on sibling image-scoring-model\.env when present)
+REM HF Hub auth: set GPU_SHELL_DOTENV=D:\Projects\synth-photo-vision\.env
+REM   (or rely on sibling synth-photo-vision\.env when present)
 
 if "%~1"=="" (
     echo Usage: %~nx0 [python args...]

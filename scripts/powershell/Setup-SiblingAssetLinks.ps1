@@ -1,7 +1,7 @@
 #Requires -Version 5.1
 <#
 .SYNOPSIS
-  Link pipeline model paths to a single copy in the image-scoring-model sibling checkout.
+  Link pipeline model paths to a single copy in the synth-photo-vision sibling checkout.
 
 .DESCRIPTION
   Uses hard links on the same NTFS volume (no Developer Mode). Safe to re-run.
@@ -11,7 +11,8 @@
   Pipeline repo root (default: two levels above this script).
 
 .PARAMETER ModelRepoRoot
-  Sibling model repo (default: ../image-scoring-model next to pipeline).
+  Sibling model repo (default: ../synth-photo-vision next to pipeline, else the
+  pre-rename ../image-scoring-model).
 #>
 param(
     [string]$PipelineRoot = (Resolve-Path (Join-Path $PSScriptRoot "..\..")).Path,
@@ -22,7 +23,10 @@ $ErrorActionPreference = "Stop"
 
 if (-not $ModelRepoRoot) {
     $parent = (Resolve-Path (Join-Path $PipelineRoot "..")).Path
-    $ModelRepoRoot = Join-Path $parent "image-scoring-model"
+    $ModelRepoRoot = Join-Path $parent "synth-photo-vision"
+    if (-not (Test-Path -LiteralPath $ModelRepoRoot)) {
+        $ModelRepoRoot = Join-Path $parent "image-scoring-model"
+    }
 }
 
 $links = @(

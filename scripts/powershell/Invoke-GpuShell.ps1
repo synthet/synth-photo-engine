@@ -23,7 +23,7 @@
 .PARAMETER DotEnv
     Optional path to a .env file. Forwards Hugging Face hub auth into the container
     (HF_TOKEN / HUGGING_FACE_HUB_TOKEN). Values are never printed. When omitted,
-    uses $env:GPU_SHELL_DOTENV if set, else ../image-scoring-model/.env when present.
+    uses $env:GPU_SHELL_DOTENV if set, else ../synth-photo-vision/.env (or the pre-rename ../image-scoring-model/.env) when present.
 
 .PARAMETER ArgList
     Command and args, e.g. python scripts/doctor.py --no-gpu
@@ -147,9 +147,12 @@ function Get-GpuShellHfTokenPairs {
     elseif ($env:GPU_SHELL_DOTENV) {
         $candidates += $env:GPU_SHELL_DOTENV
     }
-    $sibling = Join-Path (Split-Path $RepoRoot -Parent) "image-scoring-model\.env"
-    if (Test-Path -LiteralPath $sibling) {
-        $candidates += $sibling
+    foreach ($siblingDir in @("synth-photo-vision", "image-scoring-model")) {
+        $sibling = Join-Path (Split-Path $RepoRoot -Parent) "$siblingDir\.env"
+        if (Test-Path -LiteralPath $sibling) {
+            $candidates += $sibling
+            break
+        }
     }
     $repoEnv = Join-Path $RepoRoot ".env"
     if (Test-Path -LiteralPath $repoEnv) {
