@@ -71,15 +71,19 @@ WHERE r.image_id = ? AND r.detector_key = 'bird' AND r.is_current
 
 # --------------------------------------------------------------------------- pure helpers
 
-def eligibility(row: dict | None) -> str:
-    """Why a candidate image can or cannot enter the pool."""
+def eligibility(row: dict | None, *, include_legacy: bool = False) -> str:
+    """Why a candidate image can or cannot enter the pool.
+
+    ``include_legacy`` admits runs carrying a ``legacy_payload`` (owner go, 2026-11-23). Every such
+    payload is JSON ``null`` today, so image_bird_bbox_compat already falls through to the column.
+    """
     if row is None:
         return "no_current_bird_run"
     if row.get("detector_version") != V0_VERSION:
         return "current_run_not_v0"
     if row.get("status") != "detected" or row.get("region_id") is None:
         return "v0_not_detected"
-    if row.get("has_legacy_payload"):
+    if row.get("has_legacy_payload") and not include_legacy:
         # image_bird_bbox_compat reads the current run's legacy_payload; demoting it would
         # change what compat readers get, so these stay out of the pilot.
         return "has_legacy_payload"
@@ -185,7 +189,8 @@ def draw_all(pool: list[dict]) -> list[dict]:
     return sorted(pool, key=lambda f: f["image_id"])
 
 
-def snapshot(ids_file: Path, manifest_path: Path, *, seed: int, size: int) -> dict:
+def snapshot(ids_file: Path, manifest_path: Path, *, seed: int, size: int,
+             include_legacy: bool = False) -> dict:
     from modules import db
 
     if manifest_path.exists():
@@ -196,7 +201,7 @@ def snapshot(ids_file: Path, manifest_path: Path, *, seed: int, size: int) -> di
     pool = []
     for image_id in ids:
         row = conn.query_one(_CANDIDATE_SQL, (image_id,))
-        reason = eligibility(row)
+        reason = eligibility(row, include_legacy=include_legacy)
         reasons[reason] += 1
         if reason != "eligible":
             continue
@@ -310,6 +315,7 @@ def main() -> int:
     s.add_argument("--manifest", type=Path, required=True)
     s.add_argument("--seed", type=int, default=810)
     s.add_argument("--size", type=int, default=200, help="stratified draw size; 0 = every eligible frame in the ids file")
+    s.add_argument("--include-legacy", action="store_true", help="also admit runs with a legacy_payload")
     a = sub.add_parser("apply", help="re-detect the frozen frames with v1")
     a.add_argument("--manifest", type=Path, required=True)
     a.add_argument("--results", type=Path, required=True)
@@ -320,7 +326,8 @@ def main() -> int:
     args = parser.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
     if args.mode == "snapshot":
-        snapshot(args.image_ids_file, args.manifest, seed=args.seed, size=args.size)
+        snapshot(args.image_ids_file, args.manifest, seed=args.seed, size=args.size,
+                 include_legacy=args.include_legacy)
     elif args.mode == "apply":
         if args.limit < 0:
             parser.error("--limit must be nonnegative")
