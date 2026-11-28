@@ -6,6 +6,10 @@ Parse with: `grep "^## \[" docs/log.md | tail -10`
 
 ---
 
+## [2026-11-22] edit | #867 spec 09 implemented (off by default)
+
+Marked [spec 09](specs/pipeline-streamlining/09-automatic-selection.md) implemented: the rule `auto_select_rule/1` runs in `write_run` under a savepoint, with decline reasons in the new `image_localization_selection_decisions` table (migration 0050, recorded in [DB_SCHEMA.md](technical/DB_SCHEMA.md)). Turning it on and the backfill are the owner's go.
+
 ## [2026-11-20] created | #867 spec 09 draft: automatic selection for new bird runs
 
 Added the draft [spec 09](specs/pipeline-streamlining/09-automatic-selection.md) and its row in the spec hub. It describes one versioned standalone rule inside `write_run` that selects the rank-0 region of each new current v1 run, or records a reason code, with species as the consumer outcome (#859). The owner delegated D1–D6 to sub-agent research plus Jev:

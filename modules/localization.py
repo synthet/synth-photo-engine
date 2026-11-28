@@ -458,9 +458,30 @@ def write_run(run: dict[str, Any], regions: list[dict[str, Any]], *, publish: bo
                     *region["region"],
                 ),
             )
+        if publish and run.get("detector_key") == DETECTOR_KEY:
+            _auto_select(tx, run, run_id)
         return run_id
 
     return db.get_connector().run_transaction(_tx)
+
+
+def _auto_select(tx, run: dict[str, Any], run_id: int) -> None:
+    """Spec 09 (#867): the automatic selection rule, in the run's transaction (AC-1).
+
+    A savepoint isolates it, so a rule failure is logged and the run write still commits (AC-10).
+    """
+    from modules import localization_auto_select as auto
+
+    rule = auto.settings()
+    if not rule["enabled"]:
+        return
+    tx.execute("SAVEPOINT auto_select")
+    try:
+        auto.apply(tx, run, run_id, min_confidence=rule["min_confidence"])
+        tx.execute("RELEASE SAVEPOINT auto_select")
+    except Exception:  # noqa: BLE001 — the rule must never fail the run write
+        logger.exception("auto_select: rule failed for image %s run %s", run.get("image_id"), run_id)
+        tx.execute("ROLLBACK TO SAVEPOINT auto_select")
 
 
 # ---------------------------------------------------------------------------
